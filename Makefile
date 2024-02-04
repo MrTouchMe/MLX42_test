@@ -4,7 +4,7 @@ CFLAGS		=		-Wall -Werror -Wextra
 
 CC			=		cc
 
-SRC			=		src/main.c
+SRC			=		src/main.c src/animate.c src/image_utils.c
 
 BIN			=		bin
 
@@ -15,8 +15,8 @@ COLOR_CYAN	=		\033[36m
 COLOR_GREEN	=		\033[32m
 COLOR_RED	=		\033[31m
 
-$(NAME): 			install_mlx $(OBJS)
-					@$(CC) -o $(NAME) $(OBJS) -L./lib/MLX42/build/ -lmlx42 -Iinclude -lglfw
+$(NAME): 			install_mlx lib/libft/libft.a $(OBJS)
+					@$(CC) -o $(NAME) $(OBJS) -L./lib/MLX42/build/ -lmlx42 -Iinclude -lglfw -L./lib/libft -lft
 					@cd lib/libft && make && cd ../ft_printf && make && cd ../get_next_line && make
 					@echo "$(COLOR_CYAN)SO_LONG Compilation completed: $(NAME)$(COLOR_RESET)"
 
