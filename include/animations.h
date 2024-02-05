@@ -33,5 +33,6 @@ typedef struct s_sprite
 t_sprite		new_sprite(char* file_name, mlx_t* mlx);
 t_animation*	slice_sprite(t_sprite* s, sprite_slice slice, int mirrored, int frames, int delay);
 void			destroy_sprite(t_sprite* s);
+static int		get_rgba(int r, int g, int b, int a);
 
 #endif

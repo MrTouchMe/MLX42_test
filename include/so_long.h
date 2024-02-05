@@ -13,9 +13,4 @@
 # define WIDTH 640
 # define HEIGHT 360
 
-static int	get_rgba(int r, int g, int b, int a);
-int32_t	mlx_get_pixel(mlx_image_t *image, uint32_t x, uint32_t y);
-
-void	error(void);
-
 #endif
