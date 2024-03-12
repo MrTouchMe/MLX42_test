@@ -12,14 +12,12 @@
 
 #include "../include/so_long.h"
 
-static void error(void)
-{
+void error(void) {
 	puts(mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
 }
 
-int32_t main(int argc, char **argv)
-{
+int32_t main(int argc, char **argv) {
 	t_map map;
 	mlx_t *mlx;
 	mlx_texture_t *texture;
@@ -30,16 +28,21 @@ int32_t main(int argc, char **argv)
 		exit(0);
 	}
 	parse_map(argv[1], &map);
-
 	// Start mlx
-	mlx = mlx_init(WIDTH, HEIGHT, "Color Game", false);
-
+	int window_width = map.width * TILE;
+	int window_height = map.height * TILE;
+	mlx = mlx_init(window_width, window_height, "so_long", true);
 	// map to screen
-
 	if (!mlx)
 		error();
 	// Try to load the file
-	texture = mlx_load_png("./images/menu_bg.png");
+	// texture = mlx_load_png("./images/menu_bg.png");
+	texture = mlx_load_png("./images/floor.png");
+	if (!texture)
+		error();
+	draw_floor(mlx, &map, texture);
+	// ...
+
 	if (!texture)
 		error();
 	// Convert texture to a displayable image
@@ -49,7 +52,6 @@ int32_t main(int argc, char **argv)
 	// Display the image
 	if (mlx_image_to_window(mlx, img, 0, 0) < 0)
 		error();
-
 	// register loophooks
 	mlx_loop(mlx);
 	mlx_delete_image(mlx, img);
