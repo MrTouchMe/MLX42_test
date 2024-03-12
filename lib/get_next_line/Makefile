@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=		get_next_line.a
+NAME		=		libgetnextline.a
 
 CFLAGS		=		-Wall -Wextra -Werror -D BUFFER_SIZE=42
 
