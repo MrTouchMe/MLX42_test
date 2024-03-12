@@ -57,5 +57,6 @@ void parse_map(char *file, t_map *map);
 void draw_floor(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void draw_wall(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void draw_exit(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
+void draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 
 #endif

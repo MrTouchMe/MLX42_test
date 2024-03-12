@@ -49,6 +49,10 @@ int32_t main(int argc, char **argv) {
 	if (!texture)
 		error();
 	draw_exit(mlx, &map, texture);
+	texture = mlx_load_png("./images/key.png");
+	if (!texture)
+		error();
+	draw_collectible(mlx, &map, texture);
 	// Convert texture to a displayable image
 	// img = mlx_texture_to_image(mlx, texture);
 	// if (!img)
