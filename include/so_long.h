@@ -55,5 +55,7 @@ void destroy_sprite(t_sprite *s);
 // static int get_rgba(int r, int g, int b, int a);
 void parse_map(char *file, t_map *map);
 void draw_floor(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
+void draw_wall(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
+void draw_exit(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 
 #endif
