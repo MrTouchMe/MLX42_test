@@ -21,7 +21,7 @@ int32_t main(int argc, char **argv) {
 	t_map map;
 	mlx_t *mlx;
 	mlx_texture_t *texture;
-	// mlx_image_t *img;
+	mlx_texture_t *player;
 
 	if (argc == 1) {
 		write(1, "Usage so_long map\n", 18);
@@ -36,7 +36,6 @@ int32_t main(int argc, char **argv) {
 	if (!mlx)
 		error();
 	// Try to load the file
-	// texture = mlx_load_png("./images/menu_bg.png");
 	texture = mlx_load_png("./images/floor.png");
 	if (!texture)
 		error();
@@ -49,18 +48,17 @@ int32_t main(int argc, char **argv) {
 	if (!texture)
 		error();
 	draw_exit(mlx, &map, texture);
+	player = mlx_load_png("./images/player.png");
+	if (!player)
+		error();
+	draw_player(mlx, &map, player);
 	texture = mlx_load_png("./images/key.png");
 	if (!texture)
 		error();
 	draw_collectible(mlx, &map, texture);
-	// Convert texture to a displayable image
-	// img = mlx_texture_to_image(mlx, texture);
-	// if (!img)
-		// error();
-	// Display the image
-	// if (mlx_image_to_window(mlx, img, 0, 0) < 0)
-		// error();
+
 	// register loophooks
+	mlx_loop_hook(mlx, ft_hook, mlx);
 	mlx_loop(mlx);
 	// mlx_delete_image(mlx, img);
 	mlx_delete_texture(texture);

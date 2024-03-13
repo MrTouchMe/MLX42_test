@@ -14,9 +14,43 @@
 
 //exec key: detect the key (WASD) and move player
 
-void	keyhooks (mlx_t mlx, t_map *map)
-{
-//
-//register key hook function
+// void keyhooks (mlx_t mlx, t_map *map, struct s_player *player) {
+//     // Check for key press
+//     if (action_t == MLX_PRESS) {
+//         // Check for specific key and update player position
+//         // For example, if 'w' is pressed, move player up
+//     }
+// }
 
+// static mlx_image_t* image;
+
+// void ft_hook(void* param) {
+// 	mlx_t* mlx = param;
+
+// 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+// 		mlx_close_window(mlx);
+// 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
+// 		image->instances[0].y -= 5;
+// 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
+// 		image->instances[0].y += 5;
+// 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+// 		image->instances[0].x -= 5;
+// 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+// 		image->instances[0].x += 5;
+// }
+//
+void ft_hook(void* param)
+{
+	mlx_t* mlx = param;
+
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(mlx);
+	// if (mlx_is_key_down(mlx, MLX_KEY_UP))
+	// 	image->instances[0].y -= 5;
+	// if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
+	// 	image->instances[0].y += 5;
+	// if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+	// 	image->instances[0].x -= 5;
+	// if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+	// 	image->instances[0].x += 5;
 }

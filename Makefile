@@ -1,7 +1,7 @@
 # NAME		=		so_long
 # CFLAGS		=		-Wall -Werror -Wextra -g -fsanitize=address
 # CC			=		cc
-# SRC			=		src/main.c src/parse.c
+# SRC			=		src/main.c src/parse.c src/loophooks.c
 # BIN			=		bin
 # OBJS		=		$(SRC:src/%.c=$(BIN)/%.o)
 # LIBFT		=		lib/libft/libft.a
@@ -59,7 +59,7 @@
 NAME		=		so_long
 CFLAGS		=		-Wall -Werror -Wextra -g -fsanitize=address
 CC			=		cc
-SRC			=		src/main.c src/parse.c src/map_to_screen.c
+SRC			=		src/main.c src/parse.c src/map_to_screen.c  src/loophooks.c
 BIN			=		bin
 OBJS		=		$(SRC:src/%.c=$(BIN)/%.o)
 LIBFT		=		lib/libft/libft.a

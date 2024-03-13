@@ -22,6 +22,11 @@ typedef struct s_map
 	char **map;
 } t_map;
 
+typedef struct s_player {
+	int x;
+	int y;
+} t_player;
+
 typedef struct s_animation
 {
 	t_list *frames;
@@ -58,5 +63,6 @@ void draw_floor(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void draw_wall(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void draw_exit(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
-
+void ft_hook(void* param);
+void draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 #endif

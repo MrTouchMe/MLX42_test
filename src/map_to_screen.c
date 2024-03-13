@@ -100,3 +100,23 @@ void draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 		}
 	}
 }
+
+void draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
+	texture->width = TILE;
+	texture->height = TILE;
+	// Convert texture to a displayable image
+	mlx_image_t *img = mlx_texture_to_image(mlx, texture);
+	if (!img)
+		error();
+	for (int y = 0; y < map->height; y++) {
+		for (int x = 0; x < map->width; x++) {
+			if(map->map[y][x] == 'P') {
+				// Display the image at the tile's position
+				if (mlx_image_to_window(mlx, img, x * TILE, y * TILE) < 0)
+					error();
+			}
+			// Delete the image after it has been drawn
+			// mlx_delete_image(mlx, img);
+		}
+	}
+}
