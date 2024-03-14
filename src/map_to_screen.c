@@ -13,15 +13,6 @@
 
 #include "../include/so_long.h"
 
-// void map_to_screen (t_map *map)
-// {
-// 	//paint floor
-// 	//paint wall
-// 	//player
-// 	//colectible
-// 	//exit
-// }
-
 void draw_floor(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 	texture->width = TILE;
 	texture->height = TILE;
@@ -101,7 +92,7 @@ void draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 	}
 }
 
-void draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
+void draw_player(mlx_t *mlx, t_map *map,/*t_player *player,*/ mlx_texture_t *texture) {
 	texture->width = TILE;
 	texture->height = TILE;
 	// Convert texture to a displayable image
@@ -114,6 +105,8 @@ void draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 				// Display the image at the tile's position
 				if (mlx_image_to_window(mlx, img, x * TILE, y * TILE) < 0)
 					error();
+				// player->player[y][x] = map->map[y][x];
+
 			}
 			// Delete the image after it has been drawn
 			// mlx_delete_image(mlx, img);

@@ -31,7 +31,9 @@ int32_t main(int argc, char **argv) {
 	// Start mlx
 	int window_width = map.width * TILE;
 	int window_height = map.height * TILE;
+	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	mlx = mlx_init(window_width, window_height, "so_long", true);
+	mlx_set_window_size(mlx, mlx->width * 4, mlx->height * 4);
 	// map to screen
 	if (!mlx)
 		error();
