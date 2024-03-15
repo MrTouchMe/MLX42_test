@@ -24,6 +24,7 @@ typedef struct s_map
 	char **map;
 	mlx_t *mlx;
 	mlx_image_t *player;
+	int movements;
 } t_map;
 
 typedef struct s_player {

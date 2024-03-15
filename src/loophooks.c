@@ -39,30 +39,26 @@
 // 		image->instances[0].x += 5;
 // }
 //
-void ft_hook(mlx_key_data_t keydata, void* param)
-{
-	// mlx_t* mlx = param;
-
+void ft_hook(mlx_key_data_t keydata, void* param) {
 	t_map *map = (t_map*)param;
 
-	// if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-	// 	mlx_close_window(mlx);
  	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(map->mlx);
-	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
+
+	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS
+		&& map->map[(int)map->player->instances[0].x / TILE][((int)map->player->instances[0].y / TILE) - 1] == '0')
 		ft_move(map, 0, -1);
-	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
+
+
+	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS
+		&& map->map[((int)map->player->instances[0].x / TILE - 1)][(int)map->player->instances[0].y / TILE] == '0')
 		ft_move(map, -1, 0);
-	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
+
+	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS
+		&& map->map[(int)map->player->instances[0].x / TILE][((int)map->player->instances[0].y / TILE) + 1] == '0')
 		ft_move(map, 0, 1);
-	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
+
+	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS
+		&& map->map[((int)map->player->instances[0].x / TILE) + 1][(int)map->player->instances[0].y / TILE] == '0')
 		ft_move(map, 1, 0);
-	// if (mlx_is_key_down(mlx, MLX_KEY_UP))
-	// 	image->instances[0].y -= 5;
-	// if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-	// 	image->instances[0].y += 5;
-	// if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-	// 	image->instances[0].x -= 5;
-	// if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-	// 	image->instances[0].x += 5;
 }
