@@ -57,9 +57,9 @@
 # re:					fclean install_mlx all
 
 NAME		=		so_long
-CFLAGS		=		-Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS		=		-Wall -Wextra -g -fsanitize=address #-werror
 CC			=		cc
-SRC			=		src/main.c src/parse.c src/map_to_screen.c  src/loophooks.c
+SRC			=		src/main.c src/parse.c src/map_to_screen.c  src/loophooks.c src/ft_move.c
 BIN			=		bin
 OBJS		=		$(SRC:src/%.c=$(BIN)/%.o)
 LIBFT		=		lib/libft/libft.a

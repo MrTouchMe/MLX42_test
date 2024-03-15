@@ -10,6 +10,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+// # include <cstdio.h>
+// # include<stdio.h>
 
 // # define WIDTH 640
 // # define HEIGHT 360
@@ -20,6 +22,8 @@ typedef struct s_map
 	int width;
 	int height;
 	char **map;
+	mlx_t *mlx;
+	mlx_image_t *player;
 } t_map;
 
 typedef struct s_player {
@@ -64,6 +68,7 @@ void draw_floor(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void draw_wall(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void draw_exit(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
-void ft_hook(void* param);
+void ft_hook(mlx_key_data_t keydata, void* param);
 void draw_player(mlx_t *mlx, t_map *map,/*t_player *player,*/ mlx_texture_t *texture);
+void ft_move(t_map *map, int delta_x, int delta_y);
 #endif

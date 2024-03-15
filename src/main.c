@@ -34,6 +34,7 @@ int32_t main(int argc, char **argv) {
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	mlx = mlx_init(window_width, window_height, "so_long", true);
 	mlx_set_window_size(mlx, mlx->width * 4, mlx->height * 4);
+	map.mlx = mlx;
 	// map to screen
 	if (!mlx)
 		error();
@@ -60,7 +61,8 @@ int32_t main(int argc, char **argv) {
 	draw_collectible(mlx, &map, texture);
 
 	// register loophooks
-	mlx_loop_hook(mlx, ft_hook, mlx);
+	// mlx_loop_hook(mlx, ft_hook,mlx);
+	mlx_key_hook(mlx, ft_hook, &map);
 	mlx_loop(mlx);
 	// mlx_delete_image(mlx, img);
 	mlx_delete_texture(texture);

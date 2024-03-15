@@ -106,7 +106,7 @@ void draw_player(mlx_t *mlx, t_map *map,/*t_player *player,*/ mlx_texture_t *tex
 				if (mlx_image_to_window(mlx, img, x * TILE, y * TILE) < 0)
 					error();
 				// player->player[y][x] = map->map[y][x];
-
+				map->player = img;
 			}
 			// Delete the image after it has been drawn
 			// mlx_delete_image(mlx, img);
