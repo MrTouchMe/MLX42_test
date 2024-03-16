@@ -59,14 +59,17 @@ int32_t main(int argc, char **argv) {
 	if (!texture)
 		error();
 	draw_collectible(mlx, &map, texture);
-
+	map.movements = 0;
 	// register loophooks
 	// mlx_loop_hook(mlx, ft_hook,mlx);
 	mlx_key_hook(mlx, ft_hook, &map);
+	mlx_put_string(mlx, "sdasd", 16, 16);
 	mlx_loop(mlx);
+	// mlx_put_string(mlx, "sdasd", 1, 1);
 	// mlx_delete_image(mlx, img);
 	mlx_delete_texture(texture);
 	// Optional, terminate will clean up any leftover images (not textures!)
 	mlx_terminate(mlx);
+
 	return (EXIT_SUCCESS);
 }
