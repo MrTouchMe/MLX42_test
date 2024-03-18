@@ -28,17 +28,14 @@ int32_t main(int argc, char **argv) {
 		exit(0);
 	}
 	parse_map(argv[1], &map);
-	// Start mlx
 	int window_width = map.width * TILE;
 	int window_height = map.height * TILE;
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	mlx = mlx_init(window_width, window_height, "so_long", true);
-	mlx_set_window_size(mlx, mlx->width * 4, mlx->height * 4);
+	mlx_set_window_size(mlx, mlx->width * 5, mlx->height * 5);
 	map.mlx = mlx;
-	// map to screen
 	if (!mlx)
 		error();
-	// Try to load the file
 	texture = mlx_load_png("./images/floor.png");
 	if (!texture)
 		error();
@@ -60,16 +57,10 @@ int32_t main(int argc, char **argv) {
 		error();
 	draw_collectible(mlx, &map, texture);
 	map.movements = 0;
-	// register loophooks
-	// mlx_loop_hook(mlx, ft_hook,mlx);
 	mlx_key_hook(mlx, ft_hook, &map);
 	mlx_put_string(mlx, "sdasd", 16, 16);
 	mlx_loop(mlx);
-	// mlx_put_string(mlx, "sdasd", 1, 1);
-	// mlx_delete_image(mlx, img);
 	mlx_delete_texture(texture);
-	// Optional, terminate will clean up any leftover images (not textures!)
 	mlx_terminate(mlx);
-
 	return (EXIT_SUCCESS);
 }

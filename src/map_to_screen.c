@@ -16,18 +16,14 @@
 void draw_floor(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 	texture->width = TILE;
 	texture->height = TILE;
-	// Convert texture to a displayable image
-	mlx_image_t *img = mlx_texture_to_image(mlx, texture);
-	if (!img)
+
+	map->floor = mlx_texture_to_image(mlx, texture);
+	if (!map->floor)
 		error();
 	for (int y = 0; y < map->height; y++) {
 		for (int x = 0; x < map->width; x++) {
-
-			// Display the image at the tile's position
-			if (mlx_image_to_window(mlx, img, x * TILE, y * TILE) < 0)
+			if (mlx_image_to_window(mlx, map->floor, x * TILE, y * TILE) < 0)
 				error();
-			// Delete the image after it has been drawn
-			// mlx_delete_image(mlx, img);
 		}
 	}
 }
@@ -35,19 +31,16 @@ void draw_floor(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 void draw_wall(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 	texture->width = TILE;
 	texture->height = TILE;
-	// Convert texture to a displayable image
-	mlx_image_t *img = mlx_texture_to_image(mlx, texture);
-	if (!img)
+
+	map->wall = mlx_texture_to_image(mlx, texture);
+	if (!map->wall)
 		error();
 	for (int y = 0; y < map->height; y++) {
 		for (int x = 0; x < map->width; x++) {
 			if(map->map[y][x] == '1') {
-				// Display the image at the tile's position
-				if (mlx_image_to_window(mlx, img, x * TILE, y * TILE) < 0)
+				if (mlx_image_to_window(mlx, map->wall, x * TILE, y * TILE) < 0)
 					error();
 			}
-			// Delete the image after it has been drawn
-			// mlx_delete_image(mlx, img);
 		}
 	}
 }
@@ -55,19 +48,16 @@ void draw_wall(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 void draw_exit(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 	texture->width = TILE;
 	texture->height = TILE;
-	// Convert texture to a displayable image
-	mlx_image_t *img = mlx_texture_to_image(mlx, texture);
-	if (!img)
+
+	map->exit = mlx_texture_to_image(mlx, texture);
+	if (!map->exit)
 		error();
 	for (int y = 0; y < map->height; y++) {
 		for (int x = 0; x < map->width; x++) {
 			if(map->map[y][x] == 'E') {
-				// Display the image at the tile's position
-				if (mlx_image_to_window(mlx, img, x * TILE, y * TILE) < 0)
+				if (mlx_image_to_window(mlx, map->exit, x * TILE, y * TILE) < 0)
 					error();
 			}
-			// Delete the image after it has been drawn
-			// mlx_delete_image(mlx, img);
 		}
 	}
 }
@@ -75,41 +65,36 @@ void draw_exit(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 void draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 	texture->width = TILE;
 	texture->height = TILE;
-	// Convert texture to a displayable image
-	mlx_image_t *img = mlx_texture_to_image(mlx, texture);
-	if (!img)
+	map->collectible_count = 0;
+
+	map->collectible = mlx_texture_to_image(mlx, texture);
+	if (!map->collectible)
 		error();
 	for (int y = 0; y < map->height; y++) {
 		for (int x = 0; x < map->width; x++) {
 			if(map->map[y][x] == 'C') {
-				// Display the image at the tile's position
-				if (mlx_image_to_window(mlx, img, x * TILE, y * TILE) < 0)
+				map->collectible_count++;
+				if (mlx_image_to_window(mlx, map->collectible, x * TILE, y * TILE) < 0)
 					error();
 			}
-			// Delete the image after it has been drawn
-			// mlx_delete_image(mlx, img);
 		}
 	}
+	printf("collectibles:""%d\n", map->collectible_count);
 }
 
-void draw_player(mlx_t *mlx, t_map *map,/*t_player *player,*/ mlx_texture_t *texture) {
+void draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 	texture->width = TILE;
 	texture->height = TILE;
-	// Convert texture to a displayable image
-	mlx_image_t *img = mlx_texture_to_image(mlx, texture);
-	if (!img)
+
+	map->player = mlx_texture_to_image(mlx, texture);
+	if (!map->player)
 		error();
 	for (int y = 0; y < map->height; y++) {
 		for (int x = 0; x < map->width; x++) {
 			if(map->map[y][x] == 'P') {
-				// Display the image at the tile's position
-				if (mlx_image_to_window(mlx, img, x * TILE, y * TILE) < 0)
+				if (mlx_image_to_window(mlx, map->player, x * TILE, y * TILE) < 0)
 					error();
-				// player->player[y][x] = map->map[y][x];
-				map->player = img;
 			}
-			// Delete the image after it has been drawn
-			// mlx_delete_image(mlx, img);
 		}
 	}
 }
