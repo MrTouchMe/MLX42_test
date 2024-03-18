@@ -24,6 +24,9 @@ void ft_hook(mlx_key_data_t keydata, void* param) {
 		new_x = map->player->instances[0].x / TILE;
 		new_y = (map->player->instances[0].y - TILE) / TILE;
 		if (map->map[new_y][new_x] != '1') {
+			if(map->map[new_y][new_x] == 'E' && map->collectible_count == 0) {
+				mlx_close_window(map->mlx);
+			}
 			if (map->map[new_y][new_x] == 'C') {
 				map->map[new_y][new_x] = '0';
 				map->collectible_count--;
@@ -38,6 +41,9 @@ void ft_hook(mlx_key_data_t keydata, void* param) {
 		new_x = (map->player->instances[0].x - TILE) / TILE;
 		new_y = map->player->instances[0].y / TILE;
 		if (map->map[new_y][new_x] != '1') {
+			if(map->map[new_y][new_x] == 'E' && map->collectible_count == 0) {
+				mlx_close_window(map->mlx);
+			}
 			if (map->map[new_y][new_x] == 'C') {
 				map->map[new_y][new_x] = '0';
 				map->collectible_count--;
@@ -52,6 +58,9 @@ void ft_hook(mlx_key_data_t keydata, void* param) {
 		new_x = map->player->instances[0].x / TILE;
 		new_y = (map->player->instances[0].y + TILE) / TILE;
 		if (map->map[new_y][new_x] != '1') {
+			if(map->map[new_y][new_x] == 'E' && map->collectible_count == 0) {
+				mlx_close_window(map->mlx);
+			}
 			if (map->map[new_y][new_x] == 'C') {
 				map->map[new_y][new_x] = '0';
 				map->collectible_count--;
@@ -67,6 +76,9 @@ void ft_hook(mlx_key_data_t keydata, void* param) {
 		new_x = (map->player->instances[0].x + TILE) / TILE;
 		new_y = map->player->instances[0].y / TILE;
 		if (map->map[new_y][new_x] != '1') {
+			if(map->map[new_y][new_x] == 'E' && map->collectible_count == 0) {
+				mlx_close_window(map->mlx);
+			}
 			if (map->map[new_y][new_x] == 'C') {
 				map->map[new_y][new_x] = '0';
 				map->collectible_count--;

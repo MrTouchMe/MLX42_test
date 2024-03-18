@@ -98,3 +98,7 @@ void draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 		}
 	}
 }
+
+// if(map->map[y][x] == 'E') {
+// mlx_close_window(map->mlx);
+// }
