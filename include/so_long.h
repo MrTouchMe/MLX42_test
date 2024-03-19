@@ -35,5 +35,6 @@ void draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void ft_hook(mlx_key_data_t keydata, void* param);
 void draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void ft_move(t_map *map, int delta_x, int delta_y);
+void load_png(mlx_t mlx, t_map *map);
 
 #endif

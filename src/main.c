@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:01:27 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/03/11 19:51:40 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:44:41 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void error(void) {
 int32_t main(int argc, char **argv) {
 	t_map map;
 	mlx_t *mlx;
-	mlx_texture_t *texture;
-	mlx_texture_t *player;
 
 	if (argc == 1) {
 		write(1, "Usage so_long map\n", 18);
@@ -36,31 +34,11 @@ int32_t main(int argc, char **argv) {
 	map.mlx = mlx;
 	if (!mlx)
 		error();
-	texture = mlx_load_png("./images/floor.png");
-	if (!texture)
-		error();
-	draw_floor(mlx, &map, texture);
-	texture = mlx_load_png("./images/wall.png");
-	if (!texture)
-		error();
-	draw_wall(mlx, &map, texture);
-	texture = mlx_load_png("./images/exit.png");
-	if (!texture)
-		error();
-	draw_exit(mlx, &map, texture);
-	player = mlx_load_png("./images/player.png");
-	if (!player)
-		error();
-	draw_player(mlx, &map, player);
-	texture = mlx_load_png("./images/key.png");
-	if (!texture)
-		error();
-	draw_collectible(mlx, &map, texture);
+	load_png(*mlx, &map);
 	map.movements = 0;
 	mlx_key_hook(mlx, ft_hook, &map);
 	mlx_put_string(mlx, "sdasd", 16, 16);
 	mlx_loop(mlx);
-	mlx_delete_texture(texture);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
 }

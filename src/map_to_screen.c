@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:10:42 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/03/12 16:47:33 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:45:37 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,3 @@ void draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 		}
 	}
 }
-
-// if(map->map[y][x] == 'E') {
-// mlx_close_window(map->mlx);
-// }

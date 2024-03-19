@@ -9,3 +9,4 @@ lib/get_next_line/bin
 .vscode
 .DS_Store
 so_long
+.clang-format

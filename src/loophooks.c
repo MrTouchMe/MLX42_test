@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:22:29 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/03/11 15:22:31 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:45:28 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void ft_hook(mlx_key_data_t keydata, void* param) {
 	t_map *map = (t_map*)param;
-		int new_x;
-		int new_y;
+	int new_x;
+	int new_y;
 
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(map->mlx);
@@ -59,10 +59,11 @@ void ft_hook(mlx_key_data_t keydata, void* param) {
 		new_y = (map->player->instances[0].y + TILE) / TILE;
 		if (map->map[new_y][new_x] != '1') {
 			if(map->map[new_y][new_x] == 'E' && map->collectible_count == 0) {
-				mlx_close_window(map->mlx);
+
 			}
 			if (map->map[new_y][new_x] == 'C') {
 				map->map[new_y][new_x] = '0';
+				mlx_load_png("./images/floor.png");
 				map->collectible_count--;
 				printf("collectibles:""%d\n", map->collectible_count);
 			}
