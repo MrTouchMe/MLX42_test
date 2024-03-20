@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:22:29 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/03/19 18:45:28 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/03/20 23:32:50 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void ft_hook(mlx_key_data_t keydata, void* param) {
 	t_map *map = (t_map*)param;
 	int new_x;
 	int new_y;
+	int i = 0;
 
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(map->mlx);
@@ -30,6 +31,14 @@ void ft_hook(mlx_key_data_t keydata, void* param) {
 			if (map->map[new_y][new_x] == 'C') {
 				map->map[new_y][new_x] = '0';
 				map->collectible_count--;
+				i = 0;
+				while(i < map->collectible_saved)
+				{
+					if(map->collectible->instances[i].x == new_x * TILE && map->collectible->instances[i].y == new_y *TILE)
+							break;
+					i++;
+				}
+				map->collectible->instances[i].enabled = false;
 				printf("collectibles:""%d\n", map->collectible_count);
 			}
 			ft_move(map, 0, -1);
@@ -47,6 +56,14 @@ void ft_hook(mlx_key_data_t keydata, void* param) {
 			if (map->map[new_y][new_x] == 'C') {
 				map->map[new_y][new_x] = '0';
 				map->collectible_count--;
+				i = 0;
+				while(i < map->collectible_saved)
+				{
+					if(map->collectible->instances[i].x == new_x * TILE && map->collectible->instances[i].y == new_y *TILE)
+							break;
+					i++;
+				}
+				map->collectible->instances[i].enabled = false;
 				printf("collectibles:""%d\n", map->collectible_count);
 			}
 			ft_move(map, -1, 0);
@@ -65,6 +82,14 @@ void ft_hook(mlx_key_data_t keydata, void* param) {
 				map->map[new_y][new_x] = '0';
 				mlx_load_png("./images/floor.png");
 				map->collectible_count--;
+				i = 0;
+				while(i < map->collectible_saved)
+				{
+					if(map->collectible->instances[i].x == new_x * TILE && map->collectible->instances[i].y == new_y *TILE)
+							break;
+					i++;
+				}
+				map->collectible->instances[i].enabled = false;
 				printf("collectibles:""%d\n", map->collectible_count);
 			}
 			ft_move(map, 0, 1);
@@ -83,6 +108,14 @@ void ft_hook(mlx_key_data_t keydata, void* param) {
 			if (map->map[new_y][new_x] == 'C') {
 				map->map[new_y][new_x] = '0';
 				map->collectible_count--;
+				i = 0;
+				while(i < map->collectible_saved)
+				{
+					if(map->collectible->instances[i].x == new_x * TILE && map->collectible->instances[i].y == new_y *TILE)
+							break;
+					i++;
+				}
+				map->collectible->instances[i].enabled = false;
 				printf("collectibles:""%d\n", map->collectible_count);
 			}
 			ft_move(map, 1, 0);

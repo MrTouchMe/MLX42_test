@@ -24,6 +24,7 @@ typedef struct s_map {
 	mlx_image_t *exit;
 	int movements;
 	int collectible_count;
+	int collectible_saved;
 } t_map;
 
 void error(void);

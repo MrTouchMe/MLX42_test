@@ -37,7 +37,7 @@ int32_t main(int argc, char **argv) {
 	load_png(*mlx, &map);
 	map.movements = 0;
 	mlx_key_hook(mlx, ft_hook, &map);
-	mlx_put_string(mlx, "sdasd", 16, 16);
+	mlx_put_string(mlx, "so-long", 0, 0);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);

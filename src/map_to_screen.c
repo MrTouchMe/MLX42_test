@@ -66,6 +66,7 @@ void draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 	texture->width = TILE;
 	texture->height = TILE;
 	map->collectible_count = 0;
+	map ->collectible_saved = 0;
 
 	map->collectible = mlx_texture_to_image(mlx, texture);
 	if (!map->collectible)
@@ -80,6 +81,7 @@ void draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
 		}
 	}
 	printf("collectibles:""%d\n", map->collectible_count);
+	map->collectible_saved = map ->collectible_count;
 }
 
 void draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture) {
