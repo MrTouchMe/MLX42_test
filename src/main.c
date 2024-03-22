@@ -6,22 +6,25 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:01:27 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/03/19 18:44:41 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/03/22 23:58:59 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void error(void) {
+void error(void)
+{
 	puts(mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
 }
 
-int32_t main(int argc, char **argv) {
+int32_t main(int argc, char **argv)
+{
 	t_map map;
 	mlx_t *mlx;
 
-	if (argc == 1) {
+	if (argc == 1)
+	{
 		write(1, "Usage so_long map\n", 18);
 		exit(0);
 	}
