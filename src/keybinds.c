@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:22:29 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/03/23 00:10:26 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/03/23 00:40:15 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ void	handle_w_key(mlx_key_data_t keydata, t_map *map)
 					i++;
 				}
 				map->collectible->instances[i].enabled = false;
-				printf("collectibles:"
-						"%d\n",
-						map->collectible_count);
+				printf("collectibles:" "%d\n", map->collectible_count);
 			}
 			ft_move(map, 0, -1);
 			map->movements++;
@@ -85,9 +83,7 @@ void	handle_a_key(mlx_key_data_t keydata, t_map *map)
 					i++;
 				}
 				map->collectible->instances[i].enabled = false;
-				printf("collectibles:"
-						"%d\n",
-						map->collectible_count);
+				printf("collectibles:" "%d\n", map->collectible_count);
 			}
 			ft_move(map, -1, 0);
 			map->movements++;
@@ -124,9 +120,7 @@ void	handle_s_key(mlx_key_data_t keydata, t_map *map)
 					i++;
 				}
 				map->collectible->instances[i].enabled = false;
-				printf("collectibles:"
-						"%d\n",
-						map->collectible_count);
+				printf("collectibles:" "%d\n", map->collectible_count);
 			}
 			ft_move(map, 0, 1);
 			map->movements++;
@@ -163,9 +157,7 @@ void	handle_d_key(mlx_key_data_t keydata, t_map *map)
 					i++;
 				}
 				map->collectible->instances[i].enabled = false;
-				printf("collectibles:"
-						"%d\n",
-						map->collectible_count);
+				printf("collectibles:" "%d\n", map->collectible_count);
 			}
 			ft_move(map, 1, 0);
 			map->movements++;

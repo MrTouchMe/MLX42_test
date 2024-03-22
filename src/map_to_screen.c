@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:10:42 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/03/23 00:09:52 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/03/23 00:20:22 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,7 @@ void	draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 			}
 		}
 	}
-	printf("collectibles:"
-			"%d\n",
-			map->collectible_count);
+	printf("collectibles:" "%d\n", map->collectible_count);
 	map->collectible_saved = map->collectible_count;
 }
 
