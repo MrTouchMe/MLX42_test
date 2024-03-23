@@ -1,8 +1,6 @@
 MLX42/
 bin/
-lib/libft/bin
-lib/ft_printf/bin
-lib/get_next_line/bin
+libft/bin
 *.o
 *.a
 *.out
