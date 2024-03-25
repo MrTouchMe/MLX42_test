@@ -7,3 +7,7 @@ colectible counter
 implement collectible counter
 implement colectible checker
 pointer to collectible image in struct
+
+
+check map for walls and rechtengular
+check for min amount of collectibles

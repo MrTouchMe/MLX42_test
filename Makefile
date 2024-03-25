@@ -13,7 +13,7 @@
 NAME		=		so_long
 CFLAGS		=		-Wall -Wextra -g -fsanitize=address #-werror
 CC			=		cc
-SRC			=		src/main.c src/parse.c src/map_to_screen.c  src/keybinds.c src/load_png.c src/ft_hook.c src/ft_move.c
+SRC			=		src/main.c src/parse.c src/map_to_screen.c  src/keybinds.c src/load_png.c src/ft_hook.c src/ft_move.c src/map_checker.c
 BIN			=		bin
 OBJS		=		$(SRC:src/%.c=$(BIN)/%.o)
 LIBFT		=		libft/libft.a

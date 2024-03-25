@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
 
 typedef struct s_map
 {
@@ -40,6 +41,8 @@ typedef struct s_map
 
 void			error(void);
 void			parse_map(char *file, t_map *map);
+void			map_checker(t_map *map);
+void			check_edges(t_map *map, int y);
 void			draw_floor(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void			draw_wall(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void			draw_exit(mlx_t *mlx, t_map *map, mlx_texture_t *texture);

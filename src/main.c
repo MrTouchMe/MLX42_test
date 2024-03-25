@@ -31,6 +31,7 @@ int32_t	main(int argc, char **argv)
 		exit(0);
 	}
 	parse_map(argv[1], &map);
+	map_checker(&map);
 	window_width = map.width * TILE;
 	window_height = map.height * TILE;
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
