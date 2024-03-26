@@ -32,7 +32,8 @@ void map_checker(t_map *map) {
 				exit_count++;
 		}
 	}
-	check_edges(map, 0);
+	check_edges(map);
+	check_top_bottom(map);
 	if (playerCount != 1) {
 		printf("Error: Map should have exactly one player, but has %d\n", playerCount);
 		exit(EXIT_FAILURE);
@@ -49,24 +50,24 @@ void map_checker(t_map *map) {
 		printf("Error: Map should be enclosed by walls on top and bottom\n");
 		exit(EXIT_FAILURE);
 	}
-	// if(map->) {}
 }
 
+void check_edges(t_map *map) {
+	for (int y = 0; y < map->height; y++) {
+		if (map->map[y][0] != '1' || map->map[y][map->width - 1] != '1') {
+			printf("Error: Map should be enclosed by walls on left and right\n");
+			printf("%c %c\n", map->map[y][0], map->map[y][map->width - 1]);
+			exit(EXIT_FAILURE);
+		}
+	}
+}
 
-void check_edges(t_map *map, int y) {
-	int rowLength = ft_strlen(map->map[0]);
-	if (y >= map->height) {
-		return;
+void check_top_bottom(t_map *map) {
+	for (int x = 0; x < map->width; x++) {
+		if (map->map[0][x] != '1' || map->map[map->height - 1][x] != '1') {
+			printf("Error: Map should be enclosed by walls on top and bottom\n");
+			printf("%c %c\n", map->map[0][x], map->map[map->height - 1][x]);
+			exit(EXIT_FAILURE);
+		}
 	}
-	if (map->map[y][0] != '1'/* || map->map[y][rowLength - 1] != '1'*/) {
-		printf("Error: Map should be enclosed by walls on left and right\n");
-		printf("%c %c\n", map->map[y][0], map->map[y][rowLength -1]);
-		exit(EXIT_FAILURE);
-	}
-	if (map->map[y][0] != '1'/* || map->map[y][rowLength - 1] != '1'*/) {
-		printf("Error: Map should be enclosed by walls on left and right\n");
-		printf("%c %c\n", map->map[y][0], map->map[y][rowLength -1]);
-		exit(EXIT_FAILURE);
-	}
-	check_edges(map, y + 1);
 }
