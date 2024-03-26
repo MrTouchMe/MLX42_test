@@ -1,13 +1,2 @@
-check for collectible 'c'
-remove collectible from screen after walking over it
-colectible counter
-
-
-
-implement collectible counter
-implement colectible checker
-pointer to collectible image in struct
-
-
-check map for walls and rechtengular
-check for min amount of collectibles
+imlement floodfill algorithm to recursivley check for a valid path from the player to all collectibles and then to the exit. (P->C->E)
+if there is no valid path, the function should return an error.
