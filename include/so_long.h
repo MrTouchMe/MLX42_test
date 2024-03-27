@@ -58,7 +58,7 @@ void			handle_escape_key(mlx_key_data_t keydata, t_map *map);
 void			handle_w_key(mlx_key_data_t keydata, t_map *map);
 void			handle_a_key(mlx_key_data_t keydata, t_map *map);
 void			handle_s_key(mlx_key_data_t keydata, t_map *map);
-void			handle_d_key(mlx_key_data_t keydata, t_map *map)bool
-				floodfill(t_map *map, int x, int y, char target, char exit,
+void			handle_d_key(mlx_key_data_t keydata, t_map *map);
+bool			floodfill(t_map *map, int x, int y, char target, char exit,
 				char collectible, int *collectibles_found);
 #endif
