@@ -71,3 +71,30 @@ void check_top_bottom(t_map *map) {
 		}
 	}
 }
+
+// void floodfill(t_map *map, int x, int y, char target, char replacement) {
+// 	if (x < 0 || x >= map->width || y < 0 || y >= map->height)
+// 		return;
+// 	if (map->map[y][x] != target)
+// 		return;
+// 	map->map[y][x] = replacement;
+// 	floodfill(map, x + 1, y, target, replacement);
+// 	floodfill(map, x - 1, y, target, replacement);
+// 	floodfill(map, x, y + 1, target, replacement);
+// 	floodfill(map, x, y - 1, target, replacement);
+// }
+
+bool floodfill(t_map *map, int x, int y, char target, char exit, char collectible, int *collectibles_found) {
+	if (x < 0 || x >= map->width || y < 0 || y >= map->height)
+		return false;
+	if (map->map[y][x] == exit)
+		return true;
+	if (map->map[y][x] == collectible)
+		(*collectibles_found)++;
+	if (map->map[y][x] != target && map->map[y][x] != collectible)
+		return false;
+	return floodfill(map, x + 1, y, target, exit, collectible, collectibles_found) ||
+		floodfill(map, x - 1, y, target, exit, collectible, collectibles_found) ||
+		floodfill(map, x, y + 1, target, exit, collectible, collectibles_found) ||
+		floodfill(map, x, y - 1, target, exit, collectible, collectibles_found);
+}
