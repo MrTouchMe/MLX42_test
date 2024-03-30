@@ -1,2 +1,8 @@
-imlement floodfill algorithm to recursivley check for a valid path from the player to all collectibles and then to the exit. (P->C->E)
-if there is no valid path, the function should return an error.
+mandatory done!
+
+to do:
+	norm;
+	bonus:
+		enemy;
+		animations;
+		on_screen movement counter;
