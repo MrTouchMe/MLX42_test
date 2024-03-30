@@ -6,17 +6,19 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:02 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/03/25 11:50:02 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/03/30 02:49:01 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+#include <stdbool.h>
 
 void map_checker(t_map *map) {
 	int playerCount = 0;
 	int rowLength = ft_strlen(map->map[0]);
 	int collectibles = 0;
 	int exit_count = 0;
+	t_check check;
 
 	for (int y = 0; y < map->height; y++) {
 		if (ft_strlen(map->map[y]) != rowLength) {
@@ -50,6 +52,12 @@ void map_checker(t_map *map) {
 		printf("Error: Map should be enclosed by walls on top and bottom\n");
 		exit(EXIT_FAILURE);
 	}
+	check_init(map, &check);
+	floodfill(&check, check.x, check.y);
+	if (check.collectible != 0 || check.exit != 0) {
+		printf("Error: Not all collectibles have been found or the exit has not been reached\n");
+	exit(EXIT_FAILURE);
+	}
 }
 
 void check_edges(t_map *map) {
@@ -72,29 +80,44 @@ void check_top_bottom(t_map *map) {
 	}
 }
 
-// void floodfill(t_map *map, int x, int y, char target, char replacement) {
-// 	if (x < 0 || x >= map->width || y < 0 || y >= map->height)
-// 		return;
-// 	if (map->map[y][x] != target)
-// 		return;
-// 	map->map[y][x] = replacement;
-// 	floodfill(map, x + 1, y, target, replacement);
-// 	floodfill(map, x - 1, y, target, replacement);
-// 	floodfill(map, x, y + 1, target, replacement);
-// 	floodfill(map, x, y - 1, target, replacement);
-// }
+void check_init(t_map *map, t_check *check) {
+    check->cpy = ft_calloc(map->height, sizeof(char *));
+    check->collectible = 0;
+    check->exit = 0;
 
-bool floodfill(t_map *map, int x, int y, char target, char exit, char collectible, int *collectibles_found) {
-	if (x < 0 || x >= map->width || y < 0 || y >= map->height)
-		return false;
-	if (map->map[y][x] == exit)
-		return true;
-	if (map->map[y][x] == collectible)
-		(*collectibles_found)++;
-	if (map->map[y][x] != target && map->map[y][x] != collectible)
-		return false;
-	return floodfill(map, x + 1, y, target, exit, collectible, collectibles_found) ||
-		floodfill(map, x - 1, y, target, exit, collectible, collectibles_found) ||
-		floodfill(map, x, y + 1, target, exit, collectible, collectibles_found) ||
-		floodfill(map, x, y - 1, target, exit, collectible, collectibles_found);
+    for (int y = 0; y < map->height; y++) {
+        check->cpy[y] = ft_calloc(map->width + 1, sizeof(char));
+        ft_strlcpy(check->cpy[y], map->map[y], map->width + 1);
+
+        for (int x = 0; x < map->width; x++) {
+            if (map->map[y][x] == 'P') {
+                check->x = x;
+                check->y = y;
+            } else if (map->map[y][x] == 'C') {
+                check->collectible++;
+            } else if (map->map[y][x] == 'E') {
+                check->exit++;
+            }
+        }
+    }
+}
+
+void	floodfill(t_check *check, int x, int y)
+{
+    if (check->cpy[y][x] == '1' || check->cpy[y][x] == 'X')
+        return ;
+    if (check->cpy[y][x] == 'C') {
+        check->collectible--;
+    }
+    if (check->cpy[y][x] == 'E') {
+        check->exit = 0;
+    }
+    printf("Collectibles remaining: %d\n", check->collectible);
+    printf("Exits remaining: %d\n", check->exit);
+    check->cpy[y][x] = '1';
+    floodfill(check, x + 1, y);
+    floodfill(check, x - 1, y);
+    floodfill(check, x, y + 1);
+    floodfill(check, x, y - 1);
+    return ;
 }
