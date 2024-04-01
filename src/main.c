@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:01:27 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/01 14:40:33 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/01 18:10:53 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error(void)
 {
-	puts(mlx_strerror(mlx_errno));
+	ft_printf("%s\n", mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
 }
 
