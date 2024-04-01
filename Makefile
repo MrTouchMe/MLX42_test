@@ -6,12 +6,12 @@
 #    By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 23:48:14 by dgiurgev          #+#    #+#              #
-#    Updated: 2024/03/23 07:03:00 by dgiurgev         ###   ########.fr        #
+#    Updated: 2024/04/01 17:30:56 by dgiurgev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=		so_long
-CFLAGS		=		-Wall -Wextra -g -fsanitize=address #-werror
+CFLAGS		=		-Wall -Wextra -Werror -g -fsanitize=address
 CC			=		cc
 SRC			=		src/main.c src/parse.c src/map_to_screen.c  src/keybinds.c src/load_png.c src/ft_hook.c src/ft_move.c src/map_checker.c
 BIN			=		bin
@@ -31,7 +31,7 @@ $(NAME):install_mlx $(LIBFT) $(OBJS)
 					@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L./MLX42/build/ -lmlx42 -Iinclude -lglfw -L./libft -lft
 					@echo "$(COLOR_CYAN)SO_LONG Compilation completed: $(NAME)$(COLOR_RESET)"
 MLX42:
-					@git clone https://github.com/codam-coding-college/MLX42.git
+					@git clone git@github.com:MrTouchMe/MLX42.git
 					@cd MLX42 && cmake -B build && cmake --build build -j4
 
 install_mlx:		MLX42

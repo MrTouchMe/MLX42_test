@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:01:27 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/03/23 00:16:35 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/01 14:40:33 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int32_t	main(int argc, char **argv)
 {
 	t_map	map;
 	mlx_t	*mlx;
-	int		window_width;
-	int		window_height;
 
 	if (argc == 1)
 	{
@@ -32,10 +30,8 @@ int32_t	main(int argc, char **argv)
 	}
 	parse_map(argv[1], &map);
 	map_checker(&map);
-	window_width = map.width * TILE;
-	window_height = map.height * TILE;
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
-	mlx = mlx_init(window_width, window_height, "so_long", true);
+	mlx = mlx_init((map.width * TILE), (map.height * TILE), "so_long", true);
 	mlx_set_window_size(mlx, mlx->width * 5, mlx->height * 5);
 	map.mlx = mlx;
 	if (!mlx)

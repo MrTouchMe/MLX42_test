@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:57:30 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/03/22 23:58:41 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/01 17:26:21 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,16 @@ void	parse_map(char *file, t_map *map)
 		perror("Error allocating memory for map rows");
 		exit(EXIT_FAILURE);
 	}
-	lseek(fd, 0, SEEK_SET); // Go back to the start of the file
+	lseek(fd, 0, SEEK_SET);
 	while ((line = get_next_line(fd)) > 0)
 	{
-		map->map[i] = line; // Store the line in the map
+		map->map[i] = line;
 		i++;
 	}
-	map->map[i] = line; // Don't forget the last line
+	map->map[i] = line;
 	close(fd);
 }
+
+	// lseek(fd, 0, SEEK_SET); // Go back to the start of the file
+	// map->map[i] = line; // Don't forget the last line
+	// map->map[i] = line; // Store the line in the map

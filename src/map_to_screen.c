@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:10:42 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/03/23 00:20:22 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/01 17:24:08 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,87 @@
 
 void	draw_floor(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 {
+	int	y;
+	int	x;
+
 	texture->width = TILE;
 	texture->height = TILE;
 	map->floor = mlx_texture_to_image(mlx, texture);
 	if (!map->floor)
 		error();
-	for (int y = 0; y < map->height; y++)
+	y = 0;
+	while (y < map->height)
 	{
-		for (int x = 0; x < map->width; x++)
+		x = 0;
+		while (x < map->width)
 		{
 			if (mlx_image_to_window(mlx, map->floor, x * TILE, y * TILE) < 0)
 				error();
+			x++;
 		}
+		y++;
 	}
 }
 
 void	draw_wall(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 {
+	int	y;
+	int	x;
+
 	texture->width = TILE;
 	texture->height = TILE;
 	map->wall = mlx_texture_to_image(mlx, texture);
 	if (!map->wall)
 		error();
-	for (int y = 0; y < map->height; y++)
+	y = 0;
+	while (y < map->height)
 	{
-		for (int x = 0; x < map->width; x++)
+		x = 0;
+		while (x < map->width)
 		{
 			if (map->map[y][x] == '1')
 			{
 				if (mlx_image_to_window(mlx, map->wall, x * TILE, y * TILE) < 0)
 					error();
 			}
+			x++;
 		}
+		y++;
 	}
 }
 
 void	draw_exit(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 {
+	int	y;
+	int	x;
+
 	texture->width = TILE;
 	texture->height = TILE;
 	map->exit = mlx_texture_to_image(mlx, texture);
 	if (!map->exit)
 		error();
-	for (int y = 0; y < map->height; y++)
+	y = 0;
+	while (y < map->height)
 	{
-		for (int x = 0; x < map->width; x++)
+		x = 0;
+		while (x < map->width)
 		{
 			if (map->map[y][x] == 'E')
 			{
 				if (mlx_image_to_window(mlx, map->exit, x * TILE, y * TILE) < 0)
 					error();
 			}
+			x++;
 		}
+		y++;
 	}
 }
 
 void	draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 {
+	int	y;
+	int	x;
+
 	texture->width = TILE;
 	texture->height = TILE;
 	map->collectible_count = 0;
@@ -78,9 +102,11 @@ void	draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 	map->collectible = mlx_texture_to_image(mlx, texture);
 	if (!map->collectible)
 		error();
-	for (int y = 0; y < map->height; y++)
+	y = 0;
+	while (y < map->height)
 	{
-		for (int x = 0; x < map->width; x++)
+		x = 0;
+		while (x < map->width)
 		{
 			if (map->map[y][x] == 'C')
 			{
@@ -89,22 +115,29 @@ void	draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 						* TILE) < 0)
 					error();
 			}
+			x++;
 		}
+		y++;
 	}
-	printf("collectibles:" "%d\n", map->collectible_count);
+	ft_printf("collectibles:" "%d\n", map->collectible_count);
 	map->collectible_saved = map->collectible_count;
 }
 
 void	draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 {
+	int	y;
+	int	x;
+
 	texture->width = TILE;
 	texture->height = TILE;
 	map->player = mlx_texture_to_image(mlx, texture);
 	if (!map->player)
 		error();
-	for (int y = 0; y < map->height; y++)
+	y = 0;
+	while (y < map->height)
 	{
-		for (int x = 0; x < map->width; x++)
+		x = 0;
+		while (x < map->width)
 		{
 			if (map->map[y][x] == 'P')
 			{
@@ -112,6 +145,8 @@ void	draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 						* TILE) < 0)
 					error();
 			}
+			x++;
 		}
+		y++;
 	}
 }

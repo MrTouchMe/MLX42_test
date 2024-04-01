@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 23:48:51 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/03/30 00:58:24 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/01 15:00:00 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_check
 	int		collectible;
 	int		exit;
 	bool	**visited;
-}	t_check;
+}			t_check;
 
 void			error(void);
 void			parse_map(char *file, t_map *map);
