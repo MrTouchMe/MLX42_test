@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:10:42 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/01 17:24:08 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/02 20:00:56 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ void	draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 	texture->width = TILE;
 	texture->height = TILE;
 	map->collectible_count = 0;
-	map->collectible_saved = 0;
 	map->collectible = mlx_texture_to_image(mlx, texture);
 	if (!map->collectible)
 		error();
@@ -119,7 +118,6 @@ void	draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 		}
 		y++;
 	}
-	ft_printf("collectibles:" "%d\n", map->collectible_count);
 	map->collectible_saved = map->collectible_count;
 }
 
