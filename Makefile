@@ -6,14 +6,14 @@
 #    By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 23:48:14 by dgiurgev          #+#    #+#              #
-#    Updated: 2024/04/01 17:30:56 by dgiurgev         ###   ########.fr        #
+#    Updated: 2024/04/04 16:04:46 by dgiurgev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=		so_long
 CFLAGS		=		-Wall -Wextra -Werror -g -fsanitize=address
 CC			=		cc
-SRC			=		src/main.c src/parse.c src/map_to_screen.c  src/keybinds.c src/load_png.c src/ft_hook.c src/ft_move.c src/map_checker.c
+SRC			=		src/main.c src/parse.c src/map_to_screen.c  src/keybinds.c src/load_png.c src/load_assets.c src/ft_hook.c src/ft_move.c src/map_checker.c
 BIN			=		bin
 OBJS		=		$(SRC:src/%.c=$(BIN)/%.o)
 LIBFT		=		libft/libft.a

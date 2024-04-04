@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:01:27 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/02 23:25:08 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/03 14:43:14 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int32_t	main(int argc, char **argv)
 	load_png(*mlx, &map);
 	map.movements = 0;
 	mlx_key_hook(mlx, ft_hook, &map);
-	// mlx_put_string(mlx, ft_itoa(map.movements), 0, 0);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (EXIT_SUCCESS);

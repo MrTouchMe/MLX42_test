@@ -6,49 +6,72 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:57:30 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/01 17:26:21 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/04 23:53:36 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	parse_map(char *file, t_map *map)
+void	open_file(char *file, int *fd)
 {
-	int		fd;
-	char	*line;
-	int		height;
-	int		i;
-
-	fd = open(file, O_RDONLY);
-	height = 0;
-	i = 0;
-	if (fd < 0)
+	*fd = open(file, O_RDONLY);
+	if (*fd < 0)
 	{
 		perror("Error opening file");
 		exit(EXIT_FAILURE);
 	}
-	while ((line = get_next_line(fd)) > 0)
+}
+
+void	calculate_map_dimensions(int fd, t_map *map)
+{
+	char	*line;
+	int		height;
+
+	height = 0;
+	line = get_next_line(fd);
+	while (line > 0)
 	{
 		map->width = ft_strlen(line) - 1;
 		height++;
+		line = get_next_line(fd);
 	}
 	map->height = height;
-	map->map = malloc((height + 1) * sizeof(char *));
+}
+
+void	allocate_map_memory(t_map *map)
+{
+	map->map = malloc((map->height + 1) * sizeof(char *));
 	if (!map->map)
 	{
 		perror("Error allocating memory for map rows");
 		exit(EXIT_FAILURE);
 	}
+}
+
+void	read_map_into_memory(int fd, t_map *map)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
 	lseek(fd, 0, SEEK_SET);
-	while ((line = get_next_line(fd)) > 0)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		map->map[i] = line;
 		i++;
+		line = get_next_line(fd);
 	}
 	map->map[i] = line;
-	close(fd);
 }
 
-	// lseek(fd, 0, SEEK_SET); // Go back to the start of the file
-	// map->map[i] = line; // Don't forget the last line
-	// map->map[i] = line; // Store the line in the map
+void	parse_map(char *file, t_map *map)
+{
+	int	fd;
+
+	open_file(file, &fd);
+	calculate_map_dimensions(fd, map);
+	allocate_map_memory(map);
+	read_map_into_memory(fd, map);
+	close(fd);
+}

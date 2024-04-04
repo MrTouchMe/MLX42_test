@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 23:48:51 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/01 15:00:00 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/04 22:46:20 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,35 @@ typedef struct s_check
 	bool	**visited;
 }			t_check;
 
-void			error(void);
-void			parse_map(char *file, t_map *map);
-void			map_checker(t_map *map);
-void			check_edges(t_map *map);
-void			check_top_bottom(t_map *map);
-void			check_init(t_map *map, t_check *check);
-void			floodfill(t_check *check, int x, int y);
-void			draw_floor(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
-void			draw_wall(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
-void			draw_exit(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
-void			draw_collectible(mlx_t *mlx, t_map *map,
-					mlx_texture_t *texture);
-void			draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
-void			load_png(mlx_t mlx, t_map *map);
-void			ft_move(t_map *map, int delta_x, int delta_y);
-void			ft_hook(mlx_key_data_t keydata, void *param);
-void			handle_escape_key(mlx_key_data_t keydata, t_map *map);
-void			handle_w_key(mlx_key_data_t keydata, t_map *map);
-void			handle_a_key(mlx_key_data_t keydata, t_map *map);
-void			handle_s_key(mlx_key_data_t keydata, t_map *map);
-void			handle_d_key(mlx_key_data_t keydata, t_map *map);
+void	error(void);
+void	open_file(char *file, int *fd);
+void	calculate_map_dimensions(int fd, t_map *map);
+void	allocate_map_memory(t_map *map);
+void	read_map_into_memory(int fd, t_map *map);
+void	parse_map(char *file, t_map *map);
+void	map_checker(t_map *map);
+void	check_edges(t_map *map);
+void	check_top_bottom(t_map *map);
+void	check_init(t_map *map, t_check *check);
+void	floodfill(t_check *check, int x, int y);
+void	draw_floor(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
+void	draw_wall(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
+void	draw_exit(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
+void	draw_collectible(mlx_t *mlx, t_map *map,
+			mlx_texture_t *texture);
+void	draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
+void	load_png(mlx_t mlx, t_map *map);
+void	load_floor(mlx_t mlx, t_map *map);
+void	load_wall(mlx_t mlx, t_map *map);
+void	load_exit(mlx_t mlx, t_map *map);
+void	load_collectible(mlx_t mlx, t_map *map);
+void	load_player(mlx_t mlx, t_map *map);
+void	ft_move(t_map *map, int delta_x, int delta_y);
+void	ft_hook(mlx_key_data_t keydata, void *param);
+void	handle_escape_key(mlx_key_data_t keydata, t_map *map);
+void	handle_w_key(mlx_key_data_t keydata, t_map *map);
+void	handle_a_key(mlx_key_data_t keydata, t_map *map);
+void	handle_s_key(mlx_key_data_t keydata, t_map *map);
+void	handle_d_key(mlx_key_data_t keydata, t_map *map);
 
 #endif
