@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 23:48:51 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/04 22:46:20 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/05 02:36:23 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,12 @@ void	calculate_map_dimensions(int fd, t_map *map);
 void	allocate_map_memory(t_map *map);
 void	read_map_into_memory(int fd, t_map *map);
 void	parse_map(char *file, t_map *map);
+void	count_elements(t_map *map, int *playercount, int *collectibles,
+			int *exitcount);
+void	validate_counts(int playercount, int collectibles, int exitcount);
+void	validate_edges(t_map *map);
 void	map_checker(t_map *map);
+void	check_rectangular(t_map *map);
 void	check_edges(t_map *map);
 void	check_top_bottom(t_map *map);
 void	check_init(t_map *map, t_check *check);
@@ -80,5 +85,6 @@ void	handle_w_key(mlx_key_data_t keydata, t_map *map);
 void	handle_a_key(mlx_key_data_t keydata, t_map *map);
 void	handle_s_key(mlx_key_data_t keydata, t_map *map);
 void	handle_d_key(mlx_key_data_t keydata, t_map *map);
+void	handle_collectible(t_map *map, int x, int y);
 
 #endif
