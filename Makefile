@@ -6,14 +6,14 @@
 #    By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 23:48:14 by dgiurgev          #+#    #+#              #
-#    Updated: 2024/04/07 20:40:14 by dgiurgev         ###   ########.fr        #
+#    Updated: 2024/04/07 21:55:11 by dgiurgev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=		so_long
-CFLAGS		=		-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS		=		-Wall -Wextra -Werror #-g -o # -fsanitize=address
 CC			=		cc
-SRC			=		src/main.c src/parse.c src/map_to_screen.c  src/keybinds.c src/keybinds_helper.c src/load_png.c src/load_assets.c src/ft_hook.c src/ft_move.c src/map_checker.c src/map_checker_helper.c src/exit.c
+SRC			=		src/main.c src/parse.c src/map_to_screen.c  src/keybinds.c src/keybinds_helper.c src/load_png.c src/load_assets.c src/ft_hook.c src/ft_move.c src/map_checker.c src/map_checker_helper.c src/exit.c src/enemy.c
 BIN			=		bin
 OBJS		=		$(SRC:src/%.c=$(BIN)/%.o)
 LIBFT		=		libft/libft.a
@@ -43,7 +43,7 @@ $(BIN)/%.o:			src/%.c
 
 clean:
 					@cd libft && make clean
-					rm -f $(BIN)/*
+					@rm -f $(BIN)/*
 					@echo "$(COLOR_RED)Cleanup completed.$(COLOR_RESET)"
 
 fclean:				clean
