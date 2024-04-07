@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 23:48:51 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/05 02:36:23 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/07 20:50:01 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_map
 	char		**map;
 	mlx_t		*mlx;
 	mlx_image_t	*player;
+	mlx_image_t	*enemy;
 	mlx_image_t	*collectible;
 	mlx_image_t	*wall;
 	mlx_image_t	*floor;
@@ -51,6 +52,9 @@ typedef struct s_check
 }			t_check;
 
 void	error(void);
+void	skill_issue(t_map *map);
+void	ggez(t_map *map);
+void	esc_exit(t_map *map);
 void	open_file(char *file, int *fd);
 void	calculate_map_dimensions(int fd, t_map *map);
 void	allocate_map_memory(t_map *map);
@@ -71,12 +75,14 @@ void	draw_wall(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void	draw_exit(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void	draw_collectible(mlx_t *mlx, t_map *map,
 			mlx_texture_t *texture);
+void	draw_enemy(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void	draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void	load_png(mlx_t mlx, t_map *map);
 void	load_floor(mlx_t mlx, t_map *map);
 void	load_wall(mlx_t mlx, t_map *map);
 void	load_exit(mlx_t mlx, t_map *map);
 void	load_collectible(mlx_t mlx, t_map *map);
+void	load_enemy(mlx_t mlx, t_map *map);
 void	load_player(mlx_t mlx, t_map *map);
 void	ft_move(t_map *map, int delta_x, int delta_y);
 void	ft_hook(mlx_key_data_t keydata, void *param);

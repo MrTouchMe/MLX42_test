@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_png.c                                         :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 23:47:37 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/07 19:59:32 by dgiurgev         ###   ########.fr       */
+/*   Created: 2024/04/07 20:38:56 by dgiurgev          #+#    #+#             */
+/*   Updated: 2024/04/07 20:49:42 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	load_png(mlx_t mlx, t_map *map)
+void	skill_issue(t_map *map)
 {
-	load_floor(mlx, map);
-	load_wall(mlx, map);
-	load_exit(mlx, map);
-	load_collectible(mlx, map);
-	load_enemy(mlx, map);
-	load_player(mlx, map);
+	ft_printf("skill issue\n");
+	mlx_close_window(map->mlx);
+}
+
+void	ggez(t_map *map)
+{
+	ft_printf("you win!\n");
+	mlx_close_window(map->mlx);
+}
+
+void	esc_exit(t_map *map)
+{
+	ft_printf("game closed by user\n");
+	mlx_close_window(map->mlx);
 }

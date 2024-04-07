@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:10:42 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/02 20:00:56 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/07 20:54:27 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,34 @@ void	draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 		y++;
 	}
 	map->collectible_saved = map->collectible_count;
+}
+
+void	draw_enemy(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
+{
+	int	y;
+	int	x;
+
+	texture->width = TILE;
+	texture->height = TILE;
+	map->enemy = mlx_texture_to_image(mlx, texture);
+	if (!map->enemy)
+		error();
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			if (map->map[y][x] == 'X')
+			{
+				if (mlx_image_to_window(mlx, map->enemy,
+						x * TILE, y * TILE) < 0)
+					error();
+			}
+			x++;
+		}
+		y++;
+	}
 }
 
 void	draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture)

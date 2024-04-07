@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:03:39 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/04 16:04:14 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/07 20:10:53 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,18 @@ void	load_exit(mlx_t mlx, t_map *map)
 		error();
 	draw_exit(&mlx, map, exit);
 	mlx_delete_texture(exit);
+}
+
+void	load_enemy(mlx_t mlx, t_map *map)
+{
+	mlx_texture_t	*enemy;
+
+	enemy = NULL;
+	enemy = mlx_load_png("./images/enemy.png");
+	if (!enemy)
+		error();
+	draw_enemy(&mlx, map, enemy);
+	mlx_delete_texture(enemy);
 }
 
 void	load_collectible(mlx_t mlx, t_map *map)

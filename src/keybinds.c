@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:22:29 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/05 00:43:57 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/07 20:50:25 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	handle_escape_key(mlx_key_data_t keydata, t_map *map)
 {
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		mlx_close_window(map->mlx);
+		esc_exit(map);
 }
 
 void	handle_w_key(mlx_key_data_t keydata, t_map *map)
@@ -29,8 +29,10 @@ void	handle_w_key(mlx_key_data_t keydata, t_map *map)
 		y = (map->player->instances[0].y - TILE) / TILE;
 		if (map->map[y][x] != '1')
 		{
+			if (map->map[y][x] == 'X')
+				skill_issue(map);
 			if (map->map[y][x] == 'E' && map->collectible_count == 0)
-				mlx_close_window(map->mlx);
+				ggez(map);
 			if (map->map[y][x] == 'C')
 				handle_collectible(map, x, y);
 			ft_move(map, 0, -1);
@@ -53,8 +55,10 @@ void	handle_a_key(mlx_key_data_t keydata, t_map *map)
 		y = map->player->instances[0].y / TILE;
 		if (map->map[y][x] != '1')
 		{
+			if (map->map[y][x] == 'X')
+				skill_issue(map);
 			if (map->map[y][x] == 'E' && map->collectible_count == 0)
-				mlx_close_window(map->mlx);
+				ggez(map);
 			if (map->map[y][x] == 'C')
 				handle_collectible(map, x, y);
 			ft_move(map, -1, 0);
@@ -77,8 +81,10 @@ void	handle_s_key(mlx_key_data_t keydata, t_map *map)
 		y = (map->player->instances[0].y + TILE) / TILE;
 		if (map->map[y][x] != '1')
 		{
+			if (map->map[y][x] == 'X')
+				skill_issue(map);
 			if (map->map[y][x] == 'E' && map->collectible_count == 0)
-				mlx_close_window(map->mlx);
+				ggez(map);
 			if (map->map[y][x] == 'C')
 				handle_collectible(map, x, y);
 			ft_move(map, 0, 1);
@@ -101,8 +107,10 @@ void	handle_d_key(mlx_key_data_t keydata, t_map *map)
 		y = map->player->instances[0].y / TILE;
 		if (map->map[y][x] != '1')
 		{
+			if (map->map[y][x] == 'X')
+				skill_issue(map);
 			if (map->map[y][x] == 'E' && map->collectible_count == 0)
-				mlx_close_window(map->mlx);
+				ggez(map);
 			if (map->map[y][x] == 'C')
 				handle_collectible(map, x, y);
 			ft_move(map, 1, 0);
