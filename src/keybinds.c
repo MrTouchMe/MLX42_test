@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:22:29 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/07 20:50:25 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:30:14 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	handle_w_key(mlx_key_data_t keydata, t_map *map)
 
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
 	{
-		x = map->player->instances[0].x / TILE;
-		y = (map->player->instances[0].y - TILE) / TILE;
+		x = map->player[0]->instances[0].x / TILE;
+		y = (map->player[0]->instances[0].y - TILE) / TILE;
 		if (map->map[y][x] != '1')
 		{
 			if (map->map[y][x] == 'X')
@@ -39,7 +39,10 @@ void	handle_w_key(mlx_key_data_t keydata, t_map *map)
 			map->movements++;
 			mlx_image_to_window(map->mlx, map->wall, 0, 0);
 			mlx_image_to_window(map->mlx, map->wall, TILE, 0);
-			mlx_put_string(map->mlx, ft_itoa(map->movements), 0, 0);
+			if (map->counter != NULL)
+				mlx_delete_image(map->mlx, map->counter);
+			map->counter = mlx_put_string(map->mlx, \
+				ft_itoa(map->movements), 0, 0);
 		}
 	}
 }
@@ -51,8 +54,8 @@ void	handle_a_key(mlx_key_data_t keydata, t_map *map)
 
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
 	{
-		x = (map->player->instances[0].x - TILE) / TILE;
-		y = map->player->instances[0].y / TILE;
+		x = (map->player[0]->instances[0].x - TILE) / TILE;
+		y = map->player[0]->instances[0].y / TILE;
 		if (map->map[y][x] != '1')
 		{
 			if (map->map[y][x] == 'X')
@@ -65,7 +68,10 @@ void	handle_a_key(mlx_key_data_t keydata, t_map *map)
 			map->movements++;
 			mlx_image_to_window(map->mlx, map->wall, 0, 0);
 			mlx_image_to_window(map->mlx, map->wall, TILE, 0);
-			mlx_put_string(map->mlx, ft_itoa(map->movements), 0, 0);
+			if (map->counter != NULL)
+				mlx_delete_image(map->mlx, map->counter);
+			map->counter = mlx_put_string(map->mlx, \
+				ft_itoa(map->movements), 0, 0);
 		}
 	}
 }
@@ -77,8 +83,8 @@ void	handle_s_key(mlx_key_data_t keydata, t_map *map)
 
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
 	{
-		x = map->player->instances[0].x / TILE;
-		y = (map->player->instances[0].y + TILE) / TILE;
+		x = map->player[0]->instances[0].x / TILE;
+		y = (map->player[0]->instances[0].y + TILE) / TILE;
 		if (map->map[y][x] != '1')
 		{
 			if (map->map[y][x] == 'X')
@@ -91,7 +97,10 @@ void	handle_s_key(mlx_key_data_t keydata, t_map *map)
 			map->movements++;
 			mlx_image_to_window(map->mlx, map->wall, 0, 0);
 			mlx_image_to_window(map->mlx, map->wall, TILE, 0);
-			mlx_put_string(map->mlx, ft_itoa(map->movements), 0, 0);
+			if (map->counter != NULL)
+				mlx_delete_image(map->mlx, map->counter);
+			map->counter = mlx_put_string(map->mlx, \
+				ft_itoa(map->movements), 0, 0);
 		}
 	}
 }
@@ -103,8 +112,8 @@ void	handle_d_key(mlx_key_data_t keydata, t_map *map)
 
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 	{
-		x = (map->player->instances[0].x + TILE) / TILE;
-		y = map->player->instances[0].y / TILE;
+		x = (map->player[0]->instances[0].x + TILE) / TILE;
+		y = map->player[0]->instances[0].y / TILE;
 		if (map->map[y][x] != '1')
 		{
 			if (map->map[y][x] == 'X')
@@ -117,7 +126,10 @@ void	handle_d_key(mlx_key_data_t keydata, t_map *map)
 			map->movements++;
 			mlx_image_to_window(map->mlx, map->wall, 0, 0);
 			mlx_image_to_window(map->mlx, map->wall, TILE, 0);
-			mlx_put_string(map->mlx, ft_itoa(map->movements), 0, 0);
+			if (map->counter != NULL)
+				mlx_delete_image(map->mlx, map->counter);
+			map->counter = mlx_put_string(map->mlx, \
+				ft_itoa(map->movements), 0, 0);
 		}
 	}
 }

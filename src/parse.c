@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:57:30 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/04 23:53:36 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:30:38 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	read_map_into_memory(int fd, t_map *map)
 	map->map[i] = line;
 }
 
-void	parse_map(char *file, t_map *map)
+int	parse_map(char *file, t_map *map)
 {
 	int	fd;
 
@@ -74,4 +74,7 @@ void	parse_map(char *file, t_map *map)
 	allocate_map_memory(map);
 	read_map_into_memory(fd, map);
 	close(fd);
+	if (map->map[0] == NULL)
+		return (1);
+	return (0);
 }

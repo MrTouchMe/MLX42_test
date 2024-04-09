@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:03:39 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/07 21:01:17 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:31:41 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,32 @@ void	load_collectible(mlx_t mlx, t_map *map)
 
 void	load_player(mlx_t mlx, t_map *map)
 {
-	mlx_texture_t	*player;
+	mlx_texture_t	*player[6];
+	int				i;
 
-	player = NULL;
-	player = mlx_load_png("./images/player.png");
-	if (!player)
+	i = 0;
+	while (i < 5)
+		player[i++] = NULL;
+	i = 0;
+	player[0] = mlx_load_png("./images/player0.png");
+	if (!player[0])
+		error();
+	player[1] = mlx_load_png("./images/player1.png");
+	if (!player[1])
+		error();
+	player[2] = mlx_load_png("./images/player2.png");
+	if (!player[2])
+		error();
+	player[3] = mlx_load_png("./images/player3.png");
+	if (!player[3])
+		error();
+	player[4] = mlx_load_png("./images/player4.png");
+	if (!player[4])
+		error();
+	player[5] = mlx_load_png("./images/player5.png");
+	if (!player[5])
 		error();
 	draw_player(&mlx, map, player);
-	mlx_delete_texture(player);
+	while (i < 5)
+		mlx_delete_texture(player[i++]);
 }

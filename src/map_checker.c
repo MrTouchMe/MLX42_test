@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:02 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/05 02:36:55 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:31:53 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,56 +39,63 @@ int *exitcount)
 	}
 }
 
-void	validate_counts(int playercount, int collectibles, int exitcount)
+int	validate_counts(int playercount, int collectibles, int exitcount)
 {
 	if (playercount != 1)
 	{
 		ft_printf("Error: Map should have exactly one player, but has %d\n",
 			playercount);
-		exit(EXIT_FAILURE);
+		return (1);
 	}
 	if (exitcount != 1)
 	{
 		ft_printf("Error: Map should have exactly one exit, but has %d\n",
 			exitcount);
-		exit(EXIT_FAILURE);
+		return (1);
 	}
 	if (collectibles == 0)
 	{
 		ft_printf("Error: Map should have at least one collectible\n");
-		exit(EXIT_FAILURE);
+		return (1);
 	}
+	return (0);
 }
 
-void	validate_edges(t_map *map)
+int	validate_edges(t_map *map)
 {
-	check_edges(map);
-	check_top_bottom(map);
+	if (check_edges(map) || check_top_bottom(map))
+		return (1);
 	if (ft_strchr(map->map[0], '0')
 		||ft_strchr(map->map[map->height - 1], '0'))
 	{
 		ft_printf("Error: Map should be enclosed by walls on top and bottom\n");
-		exit(EXIT_FAILURE);
+		return (1);
 	}
+	return (0);
 }
 
-void	map_checker(t_map *map)
+int	map_checker(t_map *map)
 {
 	t_check	check;
 	int		playercount;
 	int		collectibles;
 	int		exitcount;
 
-	check_rectangular(map);
+	if (check_rectangular(map))
+		return (1);
 	count_elements(map, &playercount, &collectibles, &exitcount);
 	validate_counts(playercount, collectibles, exitcount);
-	validate_edges(map);
-	check_init(map, &check);
+	if (validate_edges(map))
+		return (1);
+	if (check_init(map, &check))
+		return (1);
 	floodfill(&check, check.x, check.y);
 	if (check.collectible != 0 || check.exit != 0)
 	{
 		ft_printf("Error: Not all collectibles have been found or the exit has not \
 		been reached\n");
-		exit(EXIT_FAILURE);
+		free(check.cpy);
+		return (1);
 	}
+	return (0);
 }

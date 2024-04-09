@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 01:35:45 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/05 02:39:08 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:33:01 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,36 +32,42 @@ void	floodfill(t_check *check, int x, int y)
 	return ;
 }
 
-void	check_rectangular(t_map *map)
+int	check_rectangular(t_map *map)
 {
 	int	i;
 	int	rowlength;
 
 	i = 0;
 	rowlength = ft_strlen(map->map[0]);
-	while (i < map->height)
+	while (i < map->height - 1)
 	{
 		if (ft_strlen(map->map[i]) != rowlength)
 		{
+			ft_printf("%i | %i | %i\n", i, map->map[i], rowlength);
 			ft_printf("Error: Map is not rectangular\n");
-			exit(EXIT_FAILURE);
+			return (1);
 		}
 		i++;
 	}
+	return (0);
 }
 
-void	check_init(t_map *map, t_check *check)
+int	check_init(t_map *map, t_check *check)
 {
 	int	y;
 	int	x;
 
 	check->cpy = ft_calloc(map->height, sizeof(char *));
+	if (check->cpy == NULL)
+		return (1);
 	check->collectible = 0;
 	check->exit = 0;
 	y = 0;
 	while (y < map->height)
 	{
 		check->cpy[y] = ft_calloc(map->width + 1, sizeof(char));
+		if (check->cpy[y] == NULL)
+			return (1);
 		ft_strlcpy(check->cpy[y], map->map[y], map->width + 1);
 		x = 0;
 		while (x < map->width)
@@ -79,9 +85,10 @@ void	check_init(t_map *map, t_check *check)
 		}
 		y++;
 	}
+	return (0);
 }
 
-void	check_top_bottom(t_map *map)
+int	check_top_bottom(t_map *map)
 {
 	int	x;
 
@@ -93,13 +100,14 @@ void	check_top_bottom(t_map *map)
 			ft_printf("Error: Map should be enclosed by walls on top and \
 			bottom\n");
 			ft_printf("%c %c\n", map->map[0][x], map->map[map->height - 1][x]);
-			exit(EXIT_FAILURE);
+			return (1);
 		}
 		x++;
 	}
+	return (0);
 }
 
-void	check_edges(t_map *map)
+int	check_edges(t_map *map)
 {
 	int	y;
 
@@ -111,8 +119,9 @@ void	check_edges(t_map *map)
 			ft_printf("Error: Map should be enclosed by walls on left and \
 			right\n");
 			ft_printf("%c %c\n", map->map[y][0], map->map[y][map->width - 1]);
-			exit(EXIT_FAILURE);
+			return (1);
 		}
 		y++;
 	}
+	return (0);
 }
