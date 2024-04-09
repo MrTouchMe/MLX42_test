@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 23:48:51 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/09 16:25:13 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/09 18:50:00 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	draw_wall(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void	draw_exit(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void	draw_collectible(mlx_t *mlx, t_map *map,
 			mlx_texture_t *texture);
+void	collectible_helper(mlx_t *mlx, t_map *map);
 void	draw_enemy(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void	draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture[6]);
 void	load_png(mlx_t mlx, t_map *map);
