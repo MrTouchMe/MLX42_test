@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 23:48:51 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/09 18:50:00 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:53:56 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		check_rectangular(t_map *map);
 int		check_edges(t_map *map);
 int		check_top_bottom(t_map *map);
 int		check_init(t_map *map, t_check *check);
+void	check_init_helper(t_map *map, t_check *check, int x, int y);
 void	floodfill(t_check *check, int x, int y);
 void	draw_floor(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void	draw_wall(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
@@ -80,6 +81,7 @@ void	draw_collectible(mlx_t *mlx, t_map *map,
 void	collectible_helper(mlx_t *mlx, t_map *map);
 void	draw_enemy(mlx_t *mlx, t_map *map, mlx_texture_t *texture);
 void	draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture[6]);
+void	player_helper(mlx_t *mlx, t_map *map, int i);
 void	load_png(mlx_t mlx, t_map *map);
 void	load_floor(mlx_t mlx, t_map *map);
 void	load_wall(mlx_t mlx, t_map *map);
@@ -87,6 +89,7 @@ void	load_exit(mlx_t mlx, t_map *map);
 void	load_collectible(mlx_t mlx, t_map *map);
 void	load_enemy(mlx_t mlx, t_map *map);
 void	load_player(mlx_t mlx, t_map *map);
+void	load_player_helper(mlx_texture_t *player[]);
 void	ft_move(t_map *map, int delta_x, int delta_y);
 void	ft_hook(mlx_key_data_t keydata, void *param);
 void	handle_escape_key(mlx_key_data_t keydata, t_map *map);

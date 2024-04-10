@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:10:42 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/09 18:52:48 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:35:26 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ void	draw_exit(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 
 void	draw_collectible(mlx_t *mlx, t_map *map, mlx_texture_t *texture)
 {
-
-
 	texture->width = TILE;
 	texture->height = TILE;
 	map->collectible_count = 0;
@@ -130,39 +128,40 @@ void	collectible_helper(mlx_t *mlx, t_map *map)
 
 void	draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture[6])
 {
-	int	y;
-	int	x;
 	int	i;
 
-	i = 0;
 	texture[0]->width = TILE;
 	texture[0]->height = TILE;
+	i = 0;
 	while (i < 5)
 	{
 		map->player[i] = mlx_texture_to_image(mlx, texture[i]);
 		if (!map->player[i])
 			error();
-		y = 0;
-		while (y < map->height)
-		{
-			x = 0;
-			while (x < map->width)
-			{
-				if (map->map[y][x] == 'P')
-				{
-					if (mlx_image_to_window(mlx, map->player[i], x * TILE, y
-							* TILE) < 0)
-						error();
-				}
-				x++;
-			}
-			y++;
-		}
+		player_helper(mlx, map, i);
 		i++;
 	}
 }
 
-// void	player_helper()
-// {
+void	player_helper(mlx_t *mlx, t_map *map, int i)
+{
+	int	y;
+	int	x;
 
-// }
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			if (map->map[y][x] == 'P')
+			{
+				if (mlx_image_to_window(mlx, map->player[i], x * TILE, y
+						* TILE) < 0)
+					error();
+			}
+			x++;
+		}
+		y++;
+	}
+}

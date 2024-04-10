@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 01:35:45 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/09 14:33:01 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:54:28 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,25 @@ int	check_init(t_map *map, t_check *check)
 		x = 0;
 		while (x < map->width)
 		{
-			if (map->map[y][x] == 'P')
-			{
-				check->x = x;
-				check->y = y;
-			}
-			else if (map->map[y][x] == 'C')
-				check->collectible++;
-			else if (map->map[y][x] == 'E')
-				check->exit++;
+			check_init_helper(map, check, x, y);
 			x++;
 		}
 		y++;
 	}
 	return (0);
+}
+
+void	check_init_helper(t_map *map, t_check *check, int x, int y)
+{
+	if (map->map[y][x] == 'P')
+	{
+		check->x = x;
+		check->y = y;
+	}
+	else if (map->map[y][x] == 'C')
+		check->collectible++;
+	else if (map->map[y][x] == 'E')
+		check->exit++;
 }
 
 int	check_top_bottom(t_map *map)
