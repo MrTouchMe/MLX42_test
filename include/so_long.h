@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 23:48:51 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/10 18:53:56 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/11 17:35:13 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	error(void);
 void	skill_issue(t_map *map);
 void	ggez(t_map *map);
 void	esc_exit(t_map *map);
+int		file_extention(char *file);
 void	open_file(char *file, int *fd);
 void	calculate_map_dimensions(int fd, t_map *map);
 void	allocate_map_memory(t_map *map);

@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:38:56 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/09 13:26:59 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/11 17:34:03 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,17 @@ void	esc_exit(t_map *map)
 {
 	ft_printf("game closed by user\n");
 	mlx_close_window(map->mlx);
+}
+
+int	file_extention(char *file)
+{
+	const char	*dot_pos = ft_strnstr(file, ".", ft_strlen(file));
+
+	if (dot_pos == NULL || *(dot_pos + 4) != '\0')
+	{
+		ft_printf("map should be a '.ber' file!\n");
+		exit(1);
+	}
+	else
+		return (0);
 }

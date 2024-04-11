@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:01:27 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/09 16:30:46 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/10 20:54:22 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int32_t	main(int argc, char **argv)
 {
 	t_map	map;
 
+	init_vars(&map);
 	if (argc == 1)
 	{
 		write(1, "Usage so_long map\n", 18);

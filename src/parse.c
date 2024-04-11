@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:57:30 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/09 14:30:38 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/11 17:32:45 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	parse_map(char *file, t_map *map)
 {
 	int	fd;
 
+	file_extention(file);
 	open_file(file, &fd);
 	calculate_map_dimensions(fd, map);
 	allocate_map_memory(map);
