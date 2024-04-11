@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 20:38:56 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/11 17:34:03 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/11 17:40:29 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	file_extention(char *file)
 {
 	const char	*dot_pos = ft_strnstr(file, ".", ft_strlen(file));
 
-	if (dot_pos == NULL || *(dot_pos + 4) != '\0')
+	if (dot_pos == NULL || *(dot_pos +1) != 'b' || *(dot_pos +2) != 'e'
+		|| *(dot_pos +3) != 'r' || *(dot_pos +4) != '\0')
 	{
 		ft_printf("map should be a '.ber' file!\n");
 		exit(1);
