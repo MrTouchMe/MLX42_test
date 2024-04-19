@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:10:42 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/10 20:47:30 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/19 13:13:59 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	draw_player(mlx_t *mlx, t_map *map, mlx_texture_t *texture[6])
 	texture[0]->width = TILE;
 	texture[0]->height = TILE;
 	i = 0;
-	while (i < 5)
+	while (i < 6)
 	{
 		map->player[i] = mlx_texture_to_image(mlx, texture[i]);
 		if (!map->player[i])

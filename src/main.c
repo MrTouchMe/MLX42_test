@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:01:27 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/10 20:54:22 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/19 13:24:46 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,28 @@ void	init_vars(t_map *map)
 	map->player_frame = 0;
 }
 
-void	ft_animation(void *param)
+void	player_animation(void *param)
 {
-	static int	slower = 0;
+	static int	frame_delay = 0;
 	int			i;
 	t_map		*map;
 
 	map = (t_map *)param;
-	i = 0;
-	if (++slower > 4)
+	if (++frame_delay < 4)
+		return ;
+	i = 5;
+	frame_delay = 0;
+	while (i >= 0)
 	{
-		slower = 0;
-		while (i < 5)
-		{
-			if (map->player_frame == i)
-				map->player[i]->enabled = true;
-			else
-				map->player[i]->enabled = false;
-			i++;
-		}
-		map->player_frame++;
-		if (map->player_frame >= 5)
-			map->player_frame = 0;
+		if (map->player_frame == i)
+			map->player[i]->enabled = true;
+		else
+			map->player[i]->enabled = false;
+		i--;
 	}
+	map->player_frame++;
+	if (map->player_frame >= 6)
+		map->player_frame = 0;
 }
 
 int32_t	main(int argc, char **argv)
@@ -81,7 +80,7 @@ int32_t	main(int argc, char **argv)
 	mlx_set_window_size(map.mlx, map.mlx->width * 5, map.mlx->height * 5);
 	load_png(*map.mlx, &map);
 	mlx_key_hook(map.mlx, ft_hook, &map);
-	mlx_loop_hook(map.mlx, ft_animation, &map);
+	mlx_loop_hook(map.mlx, player_animation, &map);
 	mlx_loop(map.mlx);
 	mlx_terminate(map.mlx);
 	return (EXIT_SUCCESS);

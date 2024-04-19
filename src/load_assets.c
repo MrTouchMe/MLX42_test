@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:03:39 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/10 20:46:21 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/19 13:13:37 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ void	load_player(mlx_t mlx, t_map *map)
 	int				i;
 
 	i = 0;
-	while (i < 5)
+	while (i < 6)
 		player[i++] = NULL;
 	i = 0;
 	load_player_helper(player);
 	draw_player(&mlx, map, player);
-	while (i < 5)
+	while (i < 6)
 		mlx_delete_texture(player[i++]);
 }
