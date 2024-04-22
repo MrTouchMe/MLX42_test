@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 23:48:51 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/22 22:25:02 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/22 23:03:27 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,7 @@ void	skill_issue(t_map *map);
 void	ggez(t_map *map);
 void	esc_exit(t_map *map);
 int		file_extention(char *file);
-// void	open_file(char *file, int *fd);
-// void	calculate_map_dimensions(int fd, t_map *map);
-// void	allocate_map_memory(t_map *map);
-// void	read_map_into_memory(int fd, t_map *map);
 int		parse_map(char *file, t_map *map);
-void	count_elements(t_map *map, int *playercount, int *collectibles,
-			int *exitcount);
-int		validate_counts(int playercount, int collectibles, int exitcount);
-int		validate_edges(t_map *map);
 int		map_checker(t_map *map);
 int		check_rectangular(t_map *map);
 int		check_edges(t_map *map);
