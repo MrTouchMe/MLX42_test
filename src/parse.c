@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:57:30 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/22 22:04:36 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/22 22:22:32 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,14 @@ void	allocate_map_memory(t_map *map)
 	}
 }
 
-void	read_map_into_memory(int fd, t_map *map)
+void	read_map_into_memory(char *file, int fd, t_map *map)
 {
 	char	*line;
 	int		i;
 
 	i = 0;
-	lseek(fd, 0, SEEK_SET);
+	close(fd);
+	open_file(file, &fd);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
@@ -73,7 +74,7 @@ int	parse_map(char *file, t_map *map)
 	open_file(file, &fd);
 	calculate_map_dimensions(fd, map);
 	allocate_map_memory(map);
-	read_map_into_memory(fd, map);
+	read_map_into_memory(file, fd, map);
 	close(fd);
 	if (map->map[0] == NULL)
 		return (1);
