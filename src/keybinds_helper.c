@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 00:29:31 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/10 20:47:36 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/22 22:01:27 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	check_edges(t_map *map)
 	y = 0;
 	while (y < map->height)
 	{
-		if (map->map[y][0] != '1' || map->map[y][map->width - 1] != '1')
+		if (+map->map[y][0] != '1' || map->map[y][map->width -1] != '1')
 		{
 			ft_printf("Error: Map should be enclosed by walls on left and \
-			right\n");
+right\n");
 			ft_printf("%c %c\n", map->map[y][0], map->map[y][map->width - 1]);
 			return (1);
 		}

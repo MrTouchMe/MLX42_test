@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 01:35:45 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/10 20:45:42 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/22 22:04:20 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	check_top_bottom(t_map *map)
 		if (map->map[0][x] != '1' || map->map[map->height - 1][x] != '1')
 		{
 			ft_printf("Error: Map should be enclosed by walls on top and \
-			bottom\n");
+bottom\n");
 			ft_printf("%c %c\n", map->map[0][x], map->map[map->height - 1][x]);
 			return (1);
 		}

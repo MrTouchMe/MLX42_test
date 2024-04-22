@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:02 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/09 14:31:53 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/22 22:16:10 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ int	map_checker(t_map *map)
 	if (check_rectangular(map))
 		return (1);
 	count_elements(map, &playercount, &collectibles, &exitcount);
-	validate_counts(playercount, collectibles, exitcount);
+	if (validate_counts(playercount, collectibles, exitcount) == 1)
+		return (1);
 	if (validate_edges(map))
 		return (1);
 	if (check_init(map, &check))
@@ -92,8 +93,8 @@ int	map_checker(t_map *map)
 	floodfill(&check, check.x, check.y);
 	if (check.collectible != 0 || check.exit != 0)
 	{
-		ft_printf("Error: Not all collectibles have been found or the exit has not \
-		been reached\n");
+		ft_printf("Error: Not all collectibles or the exit has not been \
+reached\n");
 		free(check.cpy);
 		return (1);
 	}
