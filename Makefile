@@ -6,7 +6,7 @@
 #    By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 23:48:14 by dgiurgev          #+#    #+#              #
-#    Updated: 2024/04/09 16:34:29 by dgiurgev         ###   ########.fr        #
+#    Updated: 2024/04/22 23:17:28 by dgiurgev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ $(NAME):install_mlx $(LIBFT) $(OBJS)
 					@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L./MLX42/build/ -lmlx42 -Iinclude -lglfw -L./libft -lft
 					@echo "$(COLOR_CYAN)SO_LONG Compilation completed: $(NAME)$(COLOR_RESET)"
 MLX42:
-					@git clone git@github.com:MrTouchMe/MLX42.git
+					@git clone https://github.com/codam-coding-college/MLX42.git
 					@cd MLX42 && cmake -B build && cmake --build build -j4
 
 install_mlx:		MLX42
