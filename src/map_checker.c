@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 11:50:02 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/22 22:16:10 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/24 18:53:26 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	validate_counts(int playercount, int collectibles, int exitcount)
 {
 	if (playercount != 1)
 	{
-		ft_printf("Error: Map should have exactly one player, but has %d\n",
-			playercount);
+		ft_printf("Error: Map should have exactly one player, but has %d\n", \
+playercount);
 		return (1);
 	}
 	if (exitcount != 1)
 	{
-		ft_printf("Error: Map should have exactly one exit, but has %d\n",
-			exitcount);
+		ft_printf("Error: Map should have exactly one exit, but has %d\n", \
+exitcount);
 		return (1);
 	}
 	if (collectibles == 0)

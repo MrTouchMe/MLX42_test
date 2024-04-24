@@ -6,7 +6,7 @@
 /*   By: dgiurgev <dgiurgev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 01:35:45 by dgiurgev          #+#    #+#             */
-/*   Updated: 2024/04/22 22:04:20 by dgiurgev         ###   ########.fr       */
+/*   Updated: 2024/04/24 18:53:52 by dgiurgev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ int	check_rectangular(t_map *map)
 
 	i = 0;
 	rowlength = ft_strlen(map->map[0]);
-	while (i < map->height - 1)
+	while (i < map->height)
 	{
 		if (ft_strlen(map->map[i]) != rowlength)
 		{
-			ft_printf("%i | %i | %i\n", i, map->map[i], rowlength);
 			ft_printf("Error: Map is not rectangular\n");
 			return (1);
 		}
